@@ -27,6 +27,21 @@
     border: 1px solid #ccc;
     border-radius: 4px;
     margin-bottom: .5rem;
+    animation:li 1s ease-in-out normal;
+    position: relative;
+}
+
+@keyframes li {
+    0% {
+        margin-left: 100px;
+        margin-right: -100px;
+        opacity: .5;
+    }
+     100% {
+         margin-left: 0;
+         margin-right: 0;
+         opacity: 1;
+     }
 }
 
 .input{
@@ -43,4 +58,48 @@
 
 .done{
     text-decoration: line-through;
+}
+
+.input-form{
+    width: 60%;
+    margin: 10px 10px 10px 105px;
+    border: 1px solid #ccc;
+    height: 30px;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.btn-form{
+    height: 30px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+.p{
+    width: 70px;
+    margin: 0 auto;
+}
+
+.likes{
+    position: absolute;
+    right: 11%;
+}
+
+.far{
+    color: #DA0024;
+}
+
+.far:hover{
+    cursor: pointer;
+}
+
+.counter{
+    margin-left: 5px;
+}
+
+#btn-like{
+    border:none;
+    background-color:white;
+    font-size: 18px;
 }

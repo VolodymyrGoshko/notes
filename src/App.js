@@ -1,14 +1,11 @@
 import React  from 'react'
 import './App.css';
-import NotesList from "./Nodes/NotesList";
+import NotesList from "./Notes/NotesList";
 import Context from "./context";
+import AddNotes from "./Notes/AddNotes";
 
 function App() {
-    const [notes, setNotes] = React.useState([
-        {id:1, completed:false, title:'Зробити дз з курсів'},
-        {id:2, completed:false, title:'Повчити англ мову'},
-        {id:3, completed:false, title:'Піти в магазин'}
-    ]);
+    const [notes, setNotes] = React.useState([]);
 
     function toggleNote(id) {
         setNotes(notes.map(note => {
@@ -23,11 +20,20 @@ function App() {
         setNotes(notes.filter(note => note.id !== id))
     }
 
+    function addNote(title) {
+        setNotes(notes.concat([{
+            title,
+            id: Date.now(),
+            completed: false
+        }]))
+    }
+
     return (
         <Context.Provider value={{removeNote}}>
             <div className='wrapper'>
                 <h1 className='wrapper-title'>Notes</h1>
-                {notes.length ? <NotesList notes={notes} onToggle={toggleNote}/> : <p>No notes!</p>}
+                <AddNotes onCreate={addNote}/>
+                {notes.length ? <NotesList notes={notes} onToggle={toggleNote}/> : <p className='p'>No notes!</p>}
             </div>
         </Context.Provider>
     );
